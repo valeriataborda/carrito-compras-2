@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../../../../xampp/htdocs/backend-apiCrud"
+		},
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "frontend-apicrud"
+	}
+}

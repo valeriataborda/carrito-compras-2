@@ -77,8 +77,47 @@ let editDataTable = ( pos )=>{
 // //funcion para eliminar datos de la tabla
 
 let deleteDataTable = ( pos )=>{
-    
+    let product = [];
+    let productSave = JSON.parse(localStorage.getItem('datosTable'));
+    if (productSave != null) {
+        product = productSave;
+    }
+    let singleProduct = product[pos];
+    //alert('producto eliminar'+ singleProduct.nombre)
+    let idProduct = {
+        id: singleProduct.id
+    }
+    let confirmar = confirm(`¿Deseas eliminar ${singleProduct.nombre}`)
+    if (confirmar) {
+        //llamar la funcion realizar la peticion
+        sendDeleteproduct(idProduct);
+    }
 }
+
+//funcion para realizar la peiticion de eliminar un producto
+let sendDeleteproduct = async (id)=>{
+    let url = "http://localhost/backend-apiCrud/productos";
+    try{
+        let respuesta = await fetch(url,{
+            method: "DELETE",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body: JSON.stringify(id) 
+        });
+
+        if (respuesta.status === 406){
+            alert("los datos enviados no son admitidos");
+        }else{
+            let mensaje = await respuesta.json();
+            alert(mensaje.message);
+            location.reload();
+        }
+    }catch (error){
+        console.log(error);
+    }
+}
+
 
 //Name user
 d.addEventListener('DOMContentLoaded',()=>{

@@ -16,9 +16,10 @@ let btnLogout = d.querySelector('#btnLogout');
 
 btnCreate.addEventListener('click', ()=>{
     //alert(`Producto ${nameInput.value}`);
-    getDataProduct();
-    // let dataProduct = getDataProduct();
-    // sendDataProduct(dataProduct);
+    // getDataProduct();
+    // sendDataProduct();
+    let dataProduct = getDataProduct();
+    sendDataProduct(dataProduct);
 });
 
 //evento al navegador para comprobar si recargo la pagina
